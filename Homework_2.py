@@ -17,15 +17,19 @@ def start_game():# def تشير الى دالة والتي تقوم بمهام �
     players_names = []# الاقواس المربعة تشير الى مصفوفة تحتوي مجموعة من القيم
     players_scores = []
 
-    for player_index in range(players_number):# for هو عبارة عن تكرار لأوامر معينة
-        player_name = input(f"{WHITE}Player {player_index + 1} enter your name:-{YELLOW} ")
+    index = 0
+    while index < players_number:
+        player_name = input(f"{WHITE}Player {index + 1} enter your name:-{YELLOW} ")
         players_names.append(player_name)# append تستعمل لاضافة قيمة معينة الى المصفوفة
         print(f"{WHITE}-"*30)
+        index += 1
 
-    for player in range(players_number):# range(start,stop,steps)
+    number = 0
+    while number < players_number:
         score = 0
-        print(f"{GREEN}{players_names[player]} you can start:{WHITE}")
-        for attempt in range(attempts):
+        print(f"{GREEN}{players_names[number]} you can start:{WHITE}")
+        attempt = 0
+        while attempt < attempts:
             random_number = random.randrange(1,6)
             player_guess = int(input(f"{WHITE}Guess a number (1,5):-{YELLOW} "))
             if player_guess == random_number:
@@ -33,8 +37,10 @@ def start_game():# def تشير الى دالة والتي تقوم بمهام �
                 print(f"{GREEN}WOOOW you got it{WHITE}")
             else:
                 print(f"{RED}Sorry the number was {random_number}{WHITE}")
+            attempt += 1
         players_scores.append(score)
         print(f"{WHITE}-"*30)
+        number += 1
 
     print_scores(
         players_names = players_names,
@@ -43,8 +49,10 @@ def start_game():# def تشير الى دالة والتي تقوم بمهام �
         )# منادات دالة print_scores()
     
 def print_scores(players_names,players_scores,function):
-    for player in range(len(players_names)):# len تستعمل لاجاد طول مصفوفة على عدد القيم الموجودة
-        print(f"{GREEN}{players_names[player]} score is {players_scores[player]}")
+    name_number = 0
+    while name_number < len(players_names):# len تستعمل لاجاد طول مصفوفة على عدد القيم الموجودة
+        print(f"{GREEN}{players_names[name_number]} score is {players_scores[name_number]}")
+        name_number += 1
     max_score = max(players_scores)# max ترجع باقيمة الاكبر
     print(f"{GREEN}Winners:{WHITE}")
     for index,score in enumerate(players_scores):
