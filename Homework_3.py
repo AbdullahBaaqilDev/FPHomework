@@ -94,7 +94,7 @@ class Search:
             result_dict = dict.fromkeys(["ID", "Name", "Date", "Nationality", "Phone Number"])
             for index, key in enumerate(result_dict.keys()):
                 result_dict[key] = result[0][index]
-            print(result_dict)
+            print(f"-----User-----\nID: {result_dict['id']}\nName: {result_dict['name']}\Date: {result_dict['date']}\nNationality: {result_dict['nationality']}\nPhone Number: {result_dict['phone_number']}\n----------")
 
             data = {}
             for key, value in result_dict.items():
