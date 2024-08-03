@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+
+<link rel="stylesheet" type="text/css" href="..\static\css\base2.css">
+<link rel="stylesheet" type="text/css" href="..\static\css\contact_us.css">
+<title>Contact Us</title>
+
+{% endblock %}
+
+
+{% block body %}
+
+<div class="main_frame">
+
+    <h1 class="frame_title">Contact Us</h1>
+
+    <h6 class="frame_side_text">
+        Where You can manage all of your users data and edit quickly and easily .<br><br>
+
+        check about our policy of privacy <a href="{{ url_for('error_page') }}">click here</a><br><br>
+
+        blablablablablablablablablabla<br>
+        blablablablablabla<br>
+        blablablablablablablablabla<br>
+        blablablablablabla<br>
+    </h6>
+
+    <div class="chat-container">
+
+        <div class="chat-messages">
+
+            {% for sender, message in messages %}
+
+            <div class="message {% if sender == 'user' %}user-message{% else %}assistant-message{% endif %}">
+
+                {% if sender == "user" %}
+                <span class="sender-label">You</span>
+                {% else %}
+                <span class="sender-label">Assistant</span>
+                {% endif %}
+
+                <p>{{ message }}</p>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <form class="send">
+            <input type="text" id="text_box" placeholder="Type your message...">
+            <input type="button" id="send_button" value="Send">
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

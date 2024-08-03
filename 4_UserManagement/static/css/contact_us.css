@@ -1,0 +1,98 @@
+.chat-container {
+    position: absolute;
+    right: 5%;
+    bottom: 0%;
+
+    width: 30%;
+    height: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 25px 25px 0px 0px;
+    background-color: #c4c4c4;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column; /* Stack the label on top of the message */
+    gap: 10px;
+    margin-bottom: 10px;
+    overflow-y: scroll;
+    height: 90%;
+}
+
+/* styles.css */
+.message {
+    display: flex;
+    flex-direction: column; /* Stack the label on top of the message */
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.sender-label {
+    font-weight: bold;
+    margin-bottom: -10px; /* Add some spacing between label and message */
+}
+
+.message p {
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    word-wrap: break-word;
+    border-radius: 15px 15px 15px 0px;
+}
+
+/* Your messages (align to the right) */
+.user-message {
+    justify-items: flex-end;
+    text-align: right;
+}
+
+/* My responses (align to the right) */
+.assistant-message {
+    justify-content: flex-end; /* Updated to align to the right */
+    text-align: right; /* Also align the text to the right */
+}
+
+.assistant-message p {
+    background-color: aliceblue;
+}
+
+.user-message p {
+    background-color: #c1f7f1;
+}
+
+.send {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#text_box {
+    place-self: left;
+    width: 70%;
+    height: 10%;
+    padding: 10px;
+    margin-right: 5%;
+    border-radius: 10px;
+    font-size: 15px;
+    border: none;
+    color: #192923;
+}
+
+#text_box::placeholder {
+    color: #acacac;
+}
+
+#send_button {
+    width: 25%;
+    height: 10%;
+    padding: 10px;
+    
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    
+    font-size: 15px;
+    color: white;
+    background-image: linear-gradient(135deg, #1cc085, #355248 78%, #16241F 100%);
+}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+
+<link rel="stylesheet" type="text/css" href="..\static\css\home.css">
+
+{% endblock %}
+
+{% block body %}
+
+<div class="text_container">
+    <h1 class="title_text">
+        Welcome To<br>The User Management</h1>
+</div>
+
+<h6 class="side_text">
+    Where You can manage all of your users data and edit it quickly and easily, completely for free for you poor guy
+    .<br><br><br>
+    check about our policy of privacy <a href="{{ url_for('error_page') }}">click here</a></h6>
+
+<div class="images_widget">
+
+    <div class="image">
+        <img src="..\static\images\image1.jpg">
+    </div>
+
+    <div class="image">
+        <img src="..\static\images\image2.jpg">
+    </div>
+
+    <div class="image">
+        <img src="..\static\images\image4.jpg">
+    </div>
+
+    <div class="image">
+        <img src="..\static\images\image3.jpg">
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="..\static\css\base.css">
+    <title>Users Management</title>
+
+    {% block head %}{% endblock %}
+
+</head>
+
+<body>
+
+    <div class="navigation_bar">
+
+        <div class="navigation_option {% if active_page == 'profile' %}active{% endif %}">
+            <a href="{{ url_for('profile', id = user_id) }}">
+                <img src="..\static\images\user.svg" alt="centered">
+                <p>Profile</p>
+            </a>
+        </div>
+
+        <div class="navigation_option {% if active_page == 'home' %}active{% endif %}">
+            <a href="{{ url_for('home') }}">
+                <img src="..\static\images\home.svg" alt="centered">
+                <p>Home</p>
+            </a>
+        </div>
+
+        <div class="navigation_option {% if active_page == 'users_database' %}active{% endif %}">
+            <a href="{{ url_for('users_database', id = user_id) }}">
+                <img src="..\static\images\database.svg" alt="centered">
+                <p>Database</p>
+            </a>
+        </div>
+
+        <div class="navigation_option {% if active_page == 'about' %}active{% endif %}">
+            <a href="{{ url_for('about') }}">
+                <img src="..\static\images\about.svg" alt="centered">
+                <p>About</p>
+            </a>
+        </div>
+
+        <div class="navigation_option {% if active_page == 'contact_us' %}active{% endif %}">
+            <a href="{{ url_for('contact_us') }}">
+                <img src="..\static\images\contact_us.svg" alt="centered">
+                <p>Contact Us</p>
+            </a>
+        </div>
+
+        <div class="navigation_option {% if active_page == 'log_out' %}active{% endif %}">
+            <a href="{{ url_for('log_out') }}">
+                <img src="..\static\images\log_out.svg" alt="centered">
+                <p>Log Out</p>
+            </a>
+        </div>
+
+    </div>
+
+    {% block body %}{% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+
+<link rel="stylesheet" type="text/css" href="..\static\css\database.css">
+<title>Users Database</title>
+
+{% endblock %}
+
+
+{% block body %}
+
+<div class="table">
+
+    <div class="header">
+
+        <div class="column header">
+            User ID
+        </div>
+
+        <div class="column header">
+            Username
+        </div>
+
+        <div class="column header">
+            Birthday
+        </div>
+
+        <div class="column header">
+            Phone Number
+        </div>
+
+    </div>
+
+    <div class="rows">
+
+        {% for maneged_user_id, maneged_user in maneged_users.items() %}
+
+        <div class="row">
+
+            <div class="column row">{{ maneged_user_id }}</div>
+            <div class="column row">{{ maneged_user.get("full_name") }}</div>
+            <div class="column row">{{ maneged_user.get("birthday") }}</div>
+            <div class="column row">{{ maneged_user.get("phone_number") }}</div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

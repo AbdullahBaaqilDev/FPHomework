@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+
+<link rel="stylesheet" type="text/css" href="..\static\css\base2.css">
+<title>Error Page</title>
+
+{% endblock %}
+
+
+{% block body %}
+<div>
+
+    <div class="message_frame">
+        <b class="frame_title">404 Error Page Not Found</b><br>
+        <p class="message_text">
+            This page may show up because:<br><br>
+
+            ● the action you made require you to be logged in<br>
+            ● there was an error in the request you did<br>
+            ● the developer is too lazy to make the feature you are trying to use<br>
+            ● go home page <a href="{{ url_for('home') }}">click here</a><br>
+        </p>
+    </div>
+
+</div>
+{% endblock %}

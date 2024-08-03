@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+
+<link rel="stylesheet" type="text/css" href="..\static\css\base2.css">
+<link rel="stylesheet" type="text/css" href="..\static\css\profile.css">
+<title>Profile</title>
+
+{% endblock %}
+
+
+{% block body %}
+
+<div class="main_frame">
+
+    <h1 class="frame_title">Profile</h1>
+
+    <div class=profile_info>
+
+        <div class="info_container">
+            <div class="info_title">
+                <p>Username</p>
+            </div>
+            <p class="info">{{name}}</p>
+        </div>
+
+        <div class="info_container">
+            <div class="info_title">
+                <p>Birthday</p>
+            </div>
+            <p class="info">{{birthday}}</p>
+        </div>
+
+        <div class="info_container">
+            <div class="info_title">
+                <p>INFO</p>
+            </div>
+            <p class="info">Joined us in {{registration_date}}<br>Have a users database that contains {{users_count}}
+                users</p>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

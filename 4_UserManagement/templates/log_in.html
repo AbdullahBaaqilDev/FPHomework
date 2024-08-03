@@ -1,0 +1,42 @@
+{% extends "base_entry_page.html" %}
+
+
+{% block head %}
+
+<title>Log In</title>
+
+{% endblock %}
+
+
+{% block frame_title %}Log In{% endblock %}
+
+
+{% block inputs %}
+
+<input id="username_input" type="text" placeholder="Username" oninput="updateInput('username_input', 'username')" />
+<input id="password_input" type="password" placeholder="Password" oninput="updateInput('password_input', 'password')" />
+
+{% endblock %}
+
+
+{% block other %}
+
+<a class="forget_password" href="{{ url_for('error_page') }}">Forget Password?</a>
+
+{% if failed %}{{failed}}{% endif %}
+
+{% endblock %}
+
+{% block buttons %}
+
+<form method="GET" action="/sign-up/step1">
+    <input class="button1" type="submit" value="Sign Up" />
+</form>
+
+<form method="POST" action="/log-in">
+    <input name="username" type="hidden" />
+    <input name="password" type="hidden" />
+    <input class="button1" type="submit" value="Log In" />
+</form>
+
+{% endblock %}

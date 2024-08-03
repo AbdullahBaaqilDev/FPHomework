@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block head %}
+
+<link rel="stylesheet" type="text/css" href="..\static\css\base2.css" />
+<link rel="stylesheet" type="text/css" href="..\static\css\about.css" />
+<title>About</title>
+
+{% endblock %} {% block body %}
+
+<div class="main_frame">
+  <h1 class="frame_title">About</h1>
+
+  <h6 class="frame_side_text">
+    Where You can manage all of your users data and edit quickly and easily .<br /><br />
+
+    check about our policy of privacy click
+    <a href="{{ url_for('error_page') }}">here</a><br /><br />
+
+    blablablablablablablablablabla<br />
+    blablablablablabla<br />
+    blablablablablablablablabla<br />
+    blablablablablabla<br />
+  </h6>
+
+  <div class="images">
+    <img src="..\static\images\image1.jpg" />
+    <img src="..\static\images\image2.jpg" />
+    <img src="..\static\images\image3.jpg" />
+    <img src="..\static\images\image4.jpg" />
+  </div>
+</div>
+
+{% endblock %}
