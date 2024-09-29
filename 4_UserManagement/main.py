@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request , redirect
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import inspect
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 from random import choices, randint, choice
@@ -165,10 +164,10 @@ def log_in():
         user = User.query.filter_by(username = username).first()
         
         if not user:
-            return render_page("log_in.html", "log_in", failed = "User not found. Please check your username.")
+            return render_page("log_in.html", "log_in", msg = "User not found. Please check your username.")
 
         if not user.check_password(password):
-            return render_page("log_in.html", "log_in", failed = "Incorrect password. Please try again.")
+            return render_page("log_in.html", "log_in", msg = "Incorrect password. Please try again.")
         
         user_id = user.id
         return redirect("/home")
@@ -176,8 +175,8 @@ def log_in():
     else:
         if sign_up_successful:
             sign_up_successful = False
-            return render_page("log_in.html", "log_in", failed = "Signed up successfully")
-        return render_page("log_in.html", "log_in", failed = False)
+            return render_page("log_in.html", "log_in", msg = "Signed up successfully")
+        return render_page("log_in.html", "log_in", msg = False)
 
 @app.route("/log-out")
 def log_out():
@@ -190,7 +189,7 @@ def log_out():
 
 @app.route("/sign-up")
 def sign_up():
-    global sign_up_successful
+    global sign_up_successful, signing_up_info
 
     required_keys = {"email", "username", "password"}
     if not required_keys.issubset(signing_up_info.keys()):
@@ -203,6 +202,7 @@ def sign_up():
         db.session.add(new_user)
         db.session.commit()
         sign_up_successful = True
+        signing_up_info = {}
         return redirect("/log-in")
     except Exception as e:
         db.session.rollback()
@@ -219,16 +219,16 @@ def sign_up_step1():
 
 
         if not email_valid(new_email):
-            return render_page("sign_up_1.html", "sign_up_1", failed = "Email isn't valid. Example: user@example.com")
+            return render_page("sign_up_1.html", "sign_up_1", msg = "Email isn't valid. Example: user@example.com")
         
         if User.query.filter_by(email = new_email).first():
-            return render_page("sign_up_1.html", "sign_up_1", failed = "Email already registered. You can directly log in.")
+            return render_page("sign_up_1.html", "sign_up_1", msg = "Email already registered. You can directly log in.")
 
         if not new_password == new_confirmed_password:
-            return render_page("sign_up_1.html", "sign_up_1", failed = "You didn't repeat the password correctly. Make sure that thay are the same")
+            return render_page("sign_up_1.html", "sign_up_1", msg = "You didn't repeat the password correctly. Make sure that thay are the same")
 
         if len(new_password) < 8:
-            return render_page("sign_up_1.html", "sign_up_1", failed = "Your password length must be 8 characters or more")
+            return render_page("sign_up_1.html", "sign_up_1", msg = "Your password length must be 8 characters or more")
 
         signing_up_info["email"] = new_email
         signing_up_info["password"] = new_password
@@ -251,10 +251,10 @@ def sign_up_step2():
 
 
         if User.query.filter_by(username = new_username).first():
-            return render_page("sign_up_2.html", "sign_up_2", failed = "Username already registered. Try another one.")
+            return render_page("sign_up_2.html", "sign_up_2", date_now = datetime.now(), msg = "Username already registered. Try another one.")
 
         if len(new_username) < 8:
-            return render_page("sign_up_2.html", "sign_up_2", failed = "Your username length must be 8 characters or more")
+            return render_page("sign_up_2.html", "sign_up_2", date_now = datetime.now(), msg = "Your username length must be 8 characters or more")
 
         signing_up_info["username"] = new_username
         if new_birth_year and new_birth_month and new_birth_day:
